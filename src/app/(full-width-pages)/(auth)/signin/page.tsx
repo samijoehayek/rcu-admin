@@ -1,33 +1,62 @@
 import SignInForm from "@/components/auth/SignInForm";
-import GridShape from "@/components/common/GridShape";
 import { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Next.js SignIn Page | TailAdmin - Next.js Dashboard Template",
-  description: "This is Next.js Signin Page TailAdmin Dashboard Template",
+  title: "Admin Portal | Sign In",
+  description: "Sign in to access your admin dashboard",
 };
 
 export default function SignIn() {
   return (
-    <div className="relative flex w-full h-screen px-4 py-6 overflow-hidden bg-white z-1 dark:bg-gray-900 sm:p-0">
-      <SignInForm />
-      <div className="relative items-center justify-center flex-1 hidden p-8 z-1 bg-brand-950 dark:bg-white/5 lg:flex">
-        {/* <!-- ===== Common Grid Shape Start ===== --> */}
-        <GridShape />
-        <div className="flex flex-col items-center max-w-xs">
-          <Link href="/" className="block mb-4">
-            <Image
-              width={231}
-              height={48}
-              src="./images/logo/auth-logo.svg"
-              alt="Logo"
-            />
-          </Link>
-          <p className="text-center text-gray-400 dark:text-white/60">
-            Free and Open-Source Tailwind CSS Admin Dashboard Template
-          </p>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-4">
+      <div className="w-full max-w-5xl flex overflow-hidden bg-white dark:bg-gray-800 rounded-2xl shadow-xl">
+        {/* Left side - Sign in form */}
+        <div className="w-full md:w-1/2 p-6">
+          <SignInForm />
+        </div>
+        
+        {/* Right side - Decorative */}
+        <div className="hidden md:block md:w-1/2 bg-blue-600 p-12 relative">
+          <div className="absolute inset-0 opacity-10">
+            <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <defs>
+                <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                  <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.5" />
+                </pattern>
+              </defs>
+              <rect width="100" height="100" fill="url(#grid)" />
+            </svg>
+          </div>
+          
+          <div className="relative z-10 h-full flex flex-col justify-center text-white">
+            <div className="mb-8">
+              <Image
+                src="/images/logo.svg" // Update this path to your logo
+                alt="Company Logo"
+                width={150}
+                height={40}
+                priority
+              />
+            </div>
+            
+            <h2 className="text-3xl font-bold mb-6">
+              Admin Dashboard
+            </h2>
+            
+            <p className="text-white/80 mb-8 text-lg max-w-md">
+              Manage your application, monitor performance, and make data-driven decisions all in one place.
+            </p>
+            
+            <div className="flex space-x-2">
+              {[1, 2, 3].map((i) => (
+                <div 
+                  key={i}
+                  className="h-2 w-2 rounded-full bg-white/70"
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
